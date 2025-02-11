@@ -22,7 +22,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
       }
       router.replace(pathname + "?" + params.toString());
     },
-    500
+    500,
   );
 
   return (
