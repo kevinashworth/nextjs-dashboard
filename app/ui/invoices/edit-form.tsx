@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
+import { CheckIcon, ClockIcon, CurrencyDollarIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useActionState } from "react";
 
@@ -13,13 +8,7 @@ import { updateInvoice, State } from "@/app/lib/actions";
 import { CustomerField, InvoiceForm } from "@/app/lib/definitions";
 import { Button } from "@/app/ui/button";
 
-export default function EditInvoiceForm({
-  invoice,
-  customers,
-}: {
-  invoice: InvoiceForm;
-  customers: CustomerField[];
-}) {
+export default function EditInvoiceForm({ invoice, customers }: { invoice: InvoiceForm; customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
   const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
@@ -95,9 +84,7 @@ export default function EditInvoiceForm({
 
         {/* Invoice Status */}
         <fieldset aria-describedby="status-error">
-          <legend className="mb-2 block text-sm font-medium">
-            Set the invoice status
-          </legend>
+          <legend className="mb-2 block text-sm font-medium">Set the invoice status</legend>
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
@@ -145,13 +132,7 @@ export default function EditInvoiceForm({
         </div>
         <div id="form-error" aria-live="polite" aria-atomic="true">
           {state.message && (
-            <p
-              className={`${
-                state.errors ? "text-red-500" : "text-green-500"
-              } mt-2 w-fit text-sm`}
-            >
-              {state.message}
-            </p>
+            <p className={`${state.errors ? "text-red-500" : "text-green-500"} mt-2 w-fit text-sm`}>{state.message}</p>
           )}
         </div>
       </div>

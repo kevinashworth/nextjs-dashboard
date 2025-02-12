@@ -9,21 +9,18 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleSearch = useDebouncedCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const params = new URLSearchParams(searchParams);
-      params.set("page", "1");
-      const term = e.target.value;
-      if (term) {
-        params.set("query", term);
-      } else {
-        params.delete("query");
-        params.delete("page");
-      }
-      router.replace(pathname + "?" + params.toString());
-    },
-    500,
-  );
+  const handleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", "1");
+    const term = e.target.value;
+    if (term) {
+      params.set("query", term);
+    } else {
+      params.delete("query");
+      params.delete("page");
+    }
+    router.replace(pathname + "?" + params.toString());
+  }, 500);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
+import { CheckIcon, ClockIcon, CurrencyDollarIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useActionState } from "react";
 
@@ -85,9 +80,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
 
         {/* Invoice Status */}
         <fieldset aria-describedby="status-error">
-          <legend className="mb-2 block text-sm font-medium">
-            Set the invoice status
-          </legend>
+          <legend className="mb-2 block text-sm font-medium">Set the invoice status</legend>
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
@@ -133,13 +126,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         </div>
         <div id="form-error" aria-live="polite" aria-atomic="true">
           {state.message && (
-            <p
-              className={`${
-                state.errors ? "text-red-500" : "text-green-500"
-              } mt-2 w-fit text-sm`}
-            >
-              {state.message}
-            </p>
+            <p className={`${state.errors ? "text-red-500" : "text-green-500"} mt-2 w-fit text-sm`}>{state.message}</p>
           )}
         </div>
       </div>
